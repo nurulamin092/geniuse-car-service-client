@@ -5,6 +5,7 @@ const Header = () => {
     return (
         <header>
             <h1>This is header </h1>
+            <Link to='/home'>Home</Link>
             <Link to='/about'>About</Link>
 
         </header>
