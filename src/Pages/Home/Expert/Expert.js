@@ -3,7 +3,7 @@ import './Expert.css'
 const Expert = ({ expert }) => {
     const { name, img } = expert;
     return (
-        <div className='gx-5 gy-5 col-sm-12 col-md-6 col-ls-4'>
+        <div className='gx-5 gy-5 col-sm-12 col-md-4 col-ls-4'>
             <div className="card " style={{ width: '18rem' }}>
                 <img src={img} class="card-img-top" alt="..." />
                 <div class="card-body">
