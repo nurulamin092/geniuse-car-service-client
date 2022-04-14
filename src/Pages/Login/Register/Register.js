@@ -16,6 +16,7 @@ const Register = () => {
         const password = e.target.password.value;
         createUserWithEmailAndPassword(email, password);
     }
+
     return (
         <div className='register-form'>
             <h3 style={{ textAlign: 'center' }}>Please Register</h3>
