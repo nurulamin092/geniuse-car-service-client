@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 import logo from '../../../images/logo.png';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -11,6 +11,10 @@ const Header = () => {
     const handleSignOut = () => {
         signOut(auth);
     }
+    const navigate = useNavigate(auth);
+    /*   if (!user) {
+          navigate('/login')
+      } */
     return (
         <>
             <Navbar collapseOnSelect expand="lg" sticky='top' bg="primary" variant="dark">

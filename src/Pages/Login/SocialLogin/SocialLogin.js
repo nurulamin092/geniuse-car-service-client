@@ -4,14 +4,22 @@ import facebook from '../../../images/social/facebook.png'
 import github from '../../../images/social/github.png';
 import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import { useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
-    const [signInWithGoogle, user] = useSignInWithGoogle(auth);
-    const [signInWithFacebook] = useSignInWithFacebook(auth);
-    const [signInWithGithub] = useSignInWithGithub(auth);
-
-    /*  const handleGoogleSignIn = () => {
- 
-     } */
+    const [signInWithGoogle, userGoogle, errorGoogle] = useSignInWithGoogle(auth);
+    const [signInWithFacebook, userFb, errorFb] = useSignInWithFacebook(auth);
+    const [signInWithGithub, userGithub, errorGithub] = useSignInWithGithub(auth);
+    const navigate = useNavigate();
+    let errorElement;
+    if (errorGoogle) {
+        errorElement =
+            <div>
+                <p className='text-danger'>Error:{errorGoogle?.message}{errorFb?.message}{errorGithub}</p>
+            </div>
+    }
+    if (userGoogle || userFb || userGithub) {
+        navigate('/home')
+    }
     return (
         <div>
             <div className='d-flex align-items-center'>
@@ -19,6 +27,7 @@ const SocialLogin = () => {
                 <p className='mt-3 px-3'>or</p>
                 <div style={{ height: '1px' }} className='bg-primary w-50'></div>
             </div>
+            {errorElement}
             <div>
                 <button onClick={() => signInWithGoogle()} className='btn btn-light w-50 my-2 d-block mx-auto'>
                     <img style={{ width: '30px' }} src={google} alt="" />
