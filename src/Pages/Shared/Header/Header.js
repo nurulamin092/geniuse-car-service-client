@@ -11,10 +11,7 @@ const Header = () => {
     const handleSignOut = () => {
         signOut(auth);
     }
-    const navigate = useNavigate(auth);
-    /*   if (!user) {
-          navigate('/login')
-      } */
+
     return (
         <>
             <Navbar collapseOnSelect expand="lg" sticky='top' bg="primary" variant="dark">
@@ -41,7 +38,7 @@ const Header = () => {
                             <Nav.Link as={Link} to="/register">Register</Nav.Link>
                             {
                                 user ? <button onClick={handleSignOut}>sign out</button> :
-                                    <Nav.Link as={Link} to="/login">
+                                    <Nav.Link as={Link} to="login">
                                         Login
                                     </Nav.Link>}
                         </Nav>

@@ -5,10 +5,11 @@ import github from '../../../images/social/github.png';
 import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../Shared/Loading/Loading'
 const SocialLogin = () => {
-    const [signInWithGoogle, userGoogle, errorGoogle] = useSignInWithGoogle(auth);
-    const [signInWithFacebook, userFb, errorFb] = useSignInWithFacebook(auth);
-    const [signInWithGithub, userGithub, errorGithub] = useSignInWithGithub(auth);
+    const [signInWithGoogle, userGoogle, googleLoading, errorGoogle] = useSignInWithGoogle(auth);
+    const [signInWithFacebook, userFb, fbLoading, errorFb] = useSignInWithFacebook(auth);
+    const [signInWithGithub, userGithub, gitLoading, errorGithub] = useSignInWithGithub(auth);
     const navigate = useNavigate();
     let errorElement;
     if (errorGoogle) {
@@ -16,6 +17,9 @@ const SocialLogin = () => {
             <div>
                 <p className='text-danger'>Error:{errorGoogle?.message}{errorFb?.message}{errorGithub}</p>
             </div>
+    }
+    if (googleLoading || fbLoading || gitLoading) {
+        return <Loading></Loading>
     }
     if (userGoogle || userFb || userGithub) {
         navigate('/home')
