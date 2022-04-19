@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Service from '../Service/Service';
 // import { useState } from 'react/cjs/react.production.min';
 // import { useState, useEffect } from 'react-dom';
@@ -12,6 +13,9 @@ const Services = () => {
     }, [])
     return (
         <div id='services' className='container'>
+            <Helmet>
+                <title>Services</title>
+            </Helmet>
             <h2 className='text-primary text-center mt-5'>Our Services:{services.length}</h2>
             <div className='services-container'>
                 {
