@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Router, Routes } from 'react-router-dom';
 import './App.css';
 import Footer from './Pages/Shared/Footer/Footer';
 import Home from './Pages/Home/Home/Home'
@@ -11,6 +11,7 @@ import Register from './Pages/Login/Register/Register';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import Checkout from './Pages/Checkout/Checkout/Checkout';
 import AddService from './Pages/AddService/AddService';
+import ManageServices from './Pages/ManageServices/ManageServices';
 function App() {
   return (
     <div>
@@ -22,20 +23,22 @@ function App() {
         <Route path='/about' element={
           <About></About>
         }></Route>
-        <Route path='/login' element={<Login></Login>}></Route>
-        <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/login' element={<Login></Login>} />
+        <Route path='/register' element={<Register></Register>} />
         <Route path='/checkout' element={
           <RequireAuth>
             <Checkout></Checkout>
           </RequireAuth>
         }>
         </Route>
-        <Route path='/add-services' element={
-          <RequireAuth>
-            <AddService></AddService>
-          </RequireAuth>
-        }></Route>
-        <Route path='*' element={<NotFound></NotFound>}></Route>
+        <Route path='/add'
+          element={
+            <RequireAuth>
+              <AddService></AddService>
+            </RequireAuth>
+          } />
+        <Route path='/manages' element={<RequireAuth><ManageServices /></RequireAuth>} />
+        <Route path='*' element={<NotFound></NotFound>} />
       </Routes>
       <Footer></Footer>
     </div>
