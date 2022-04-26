@@ -20,7 +20,7 @@ const RequireAuth = ({ children }) => {
         await sendEmailVerification();
         toast('Send Email')
     }
-    if (!user.emailVerified) {
+    if (user.providerData[0]?.providerId === 'password' && !user.emailVerified) {
         return <div>
             <h3 className='text-danger'>Your Email is not verified</h3>
             <h4 className='text-info'> Please Verified Your Email Address</h4>
